@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Abhinandan Somkuwar — Resume</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --bg: #0d0f14;
+      --surface: #13161d;
+      --border: #1f2330;
+      --accent: #c8f04e;
+      --accent2: #4ef0c8;
+      --text: #e8eaf0;
+      --muted: #6b7280;
+      --tag-bg: #1a1e2a;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      line-height: 1.6;
+      min-height: 100vh;
+      padding: 2rem 1rem 4rem;
+    }
+
+    /* ── Layout ── */
+    .page {
+      max-width: 860px;
+      margin: 0 auto;
+      display: grid;
+      gap: 0;
+    }
+
+    /* ── Header ── */
+    header {
+      border: 1px solid var(--border);
+      border-bottom: none;
+      padding: 3rem 3rem 2.5rem;
+      background: var(--surface);
+      position: relative;
+      overflow: hidden;
+      animation: fadeUp 0.6s ease both;
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 260px; height: 260px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(200,240,78,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2.2rem, 6vw, 3.4rem);
+      line-height: 1.05;
+      color: #fff;
+      letter-spacing: -0.02em;
+    }
+
+    h1 em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--accent2);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-top: 0.5rem;
+    }
+
+    .contact-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 0.3rem;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    .contact-list a {
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .contact-list a:hover { color: var(--accent); }
+
+    .objective {
+      margin-top: 2rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+      color: #9ca3b0;
+      font-size: 0.92rem;
+      max-width: 620px;
+      line-height: 1.75;
+    }
+
+    /* ── Sections ── */
+    .section {
+      border: 1px solid var(--border);
+      border-top: none;
+      padding: 2.5rem 3rem;
+      background: var(--surface);
+      animation: fadeUp 0.6s ease both;
+    }
+    .section:nth-child(2) { animation-delay: 0.07s; }
+    .section:nth-child(3) { animation-delay: 0.14s; }
+    .section:nth-child(4) { animation-delay: 0.21s; }
+    .section:nth-child(5) { animation-delay: 0.28s; }
+    .section:nth-child(6) { animation-delay: 0.35s; }
+    .section:nth-child(7) { animation-delay: 0.42s; }
+    .section:last-child {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section-title {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.8rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .section-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* ── Education ── */
+    .edu-item + .edu-item { margin-top: 1.6rem; }
+
+    .edu-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .edu-school {
+      font-weight: 600;
+      color: #fff;
+      font-size: 0.95rem;
+    }
+
+    .edu-year {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    .edu-degree {
+      font-size: 0.85rem;
+      color: #9ca3b0;
+      margin-top: 0.2rem;
+    }
+
+    .edu-score {
+      display: inline-block;
+      margin-top: 0.4rem;
+      background: var(--tag-bg);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 0.1rem 0.55rem;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--accent2);
+    }
+
+    /* ── Skills ── */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1rem;
+    }
+
+    .skill-group {}
+    .skill-label {
+      font-size: 0.72rem;
+      font-family: 'DM Mono', monospace;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.45rem;
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .tag {
+      background: var(--tag-bg);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 0.2rem 0.6rem;
+      font-size: 0.78rem;
+      color: var(--text);
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .tag:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* ── Projects ── */
+    .project + .project { margin-top: 2rem; }
+
+    .project-name {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.15rem;
+      color: #fff;
+      margin-bottom: 0.8rem;
+    }
+
+    .project-name span {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--accent2);
+      font-style: normal;
+      margin-left: 0.6rem;
+      vertical-align: middle;
+    }
+
+    .bullets {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .bullets li {
+      font-size: 0.88rem;
+      color: #9ca3b0;
+      padding-left: 1.2rem;
+      position: relative;
+    }
+
+    .bullets li::before {
+      content: '▸';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-size: 0.7rem;
+      top: 0.15rem;
+    }
+
+    .bullets li strong {
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    /* ── Internships ── */
+    .intern-card {
+      display: flex;
+      gap: 1.5rem;
+      align-items: flex-start;
+      flex-wrap: wrap;
+    }
+
+    .intern-badge {
+      background: var(--tag-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.6rem 1.2rem;
+      text-align: center;
+      min-width: 100px;
+    }
+
+    .intern-company {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.1rem;
+      color: var(--accent);
+    }
+
+    .intern-type {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem;
+      color: var(--muted);
+      margin-top: 0.2rem;
+    }
+
+    .intern-details { flex: 1; }
+
+    .intern-role {
+      font-weight: 600;
+      color: #fff;
+      font-size: 0.95rem;
+    }
+
+    .intern-meta {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--muted);
+      margin-top: 0.3rem;
+    }
+
+    /* ── Certifications ── */
+    .cert-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 0.6rem;
+    }
+
+    .cert-item {
+      background: var(--tag-bg);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 0.65rem 1rem;
+      font-size: 0.83rem;
+      color: var(--text);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.5rem;
+      transition: border-color 0.2s;
+    }
+    .cert-item:hover { border-color: var(--accent2); }
+
+    .cert-issuer {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    /* ── Achievements ── */
+    .achievement-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .achievement-item {
+      font-size: 0.88rem;
+      color: #9ca3b0;
+      padding-left: 1.2rem;
+      position: relative;
+    }
+    .achievement-item::before {
+      content: '◆';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-size: 0.55rem;
+      top: 0.3rem;
+    }
+
+    /* ── Declaration ── */
+    .declaration {
+      font-size: 0.83rem;
+      color: var(--muted);
+      font-style: italic;
+      border-left: 2px solid var(--border);
+      padding-left: 1rem;
+    }
+
+    /* ── Footer ── */
+    footer {
+      margin-top: 2rem;
+      text-align: center;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      color: #2e3340;
+      letter-spacing: 0.08em;
+    }
+
+    /* ── Animation ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── Print ── */
+    @media print {
+      body { background: #fff; color: #111; padding: 0; }
+      :root {
+        --bg: #fff; --surface: #fff; --border: #ddd;
+        --accent: #4a7c1f; --accent2: #177a60;
+        --text: #111; --muted: #555; --tag-bg: #f5f5f5;
+      }
+      .section, header { animation: none; }
+    }
+
+    @media (max-width: 600px) {
+      header, .section { padding: 1.8rem 1.4rem; }
+      .contact-list { align-items: flex-start; }
+      .header-top { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <header>
+    <div class="header-top">
+      <div>
+        <h1>Abhinandan<br><em>Somkuwar</em></h1>
+        <p class="subtitle">Data Science · CSE Undergraduate · B.Tech 2028</p>
+      </div>
+      <ul class="contact-list">
+        <li>+91-8390176414</li>
+        <li><a href="mailto:ritiksomkuwar0921@gmail.com">ritiksomkuwar0921@gmail.com</a></li>
+        <li><a href="https://www.linkedin.com/in/abhinandan-somkuwar-7138563a5" target="_blank">linkedin.com/in/abhinandan-somkuwar</a></li>
+        <li><a href="https://github.com/AbhinandanSomkuwar" target="_blank">github.com/AbhinandanSomkuwar</a></li>
+        <li>Nagpur, Maharashtra</li>
+      </ul>
+    </div>
+    <p class="objective">
+      Aspiring Data Science professional and 4th-semester undergraduate with a strong foundation in Python and statistics. Seeking a data science or data analyst internship to leverage skills in data analysis, visualization, and predictive modeling to solve real-world business problems.
+    </p>
+  </header>
+
+  <!-- EDUCATION -->
+  <section class="section">
+    <h2 class="section-title">Education</h2>
+
+    <div class="edu-item">
+      <div class="edu-row">
+        <span class="edu-school">JD College of Engineering and Management, Nagpur</span>
+        <span class="edu-year">2024 – 2028</span>
+      </div>
+      <p class="edu-degree">Bachelor of Technology — CSE (Data Science)</p>
+      <span class="edu-score">CGPA: 7.52 / 10</span>
+    </div>
+
+    <div class="edu-item">
+      <div class="edu-row">
+        <span class="edu-school">Kendriya Vidyalaya Ordnance Factory, Ambajhari</span>
+        <span class="edu-year">2021 – 2022</span>
+      </div>
+      <p class="edu-degree">Intermediate (Class XII)</p>
+      <span class="edu-score">75.5%</span>
+    </div>
+
+    <div class="edu-item">
+      <div class="edu-row">
+        <span class="edu-school">Kendriya Vidyalaya Ordnance Factory, Ambajhari</span>
+        <span class="edu-year">2023 – 2024</span>
+      </div>
+      <p class="edu-degree">Matriculation (Class X)</p>
+      <span class="edu-score">64.8%</span>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section class="section">
+    <h2 class="section-title">Technical Skills</h2>
+    <div class="skills-grid">
+      <div class="skill-group">
+        <p class="skill-label">Languages</p>
+        <div class="skill-tags">
+          <span class="tag">Python</span>
+          <span class="tag">C</span>
+          <span class="tag">C++</span>
+          <span class="tag">SQL</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <p class="skill-label">Data Science & ML</p>
+        <div class="skill-tags">
+          <span class="tag">Pandas</span>
+          <span class="tag">NumPy</span>
+          <span class="tag">Statistics</span>
+          <span class="tag">Probability</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <p class="skill-label">Visualization</p>
+        <div class="skill-tags">
+          <span class="tag">Matplotlib</span>
+          <span class="tag">MS Excel</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <p class="skill-label">Databases</p>
+        <div class="skill-tags">
+          <span class="tag">MySQL</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <p class="skill-label">Tools</p>
+        <div class="skill-tags">
+          <span class="tag">Jupyter Notebook</span>
+          <span class="tag">Google Colab</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section class="section">
+    <h2 class="section-title">Projects</h2>
+
+    <div class="project">
+      <p class="project-name">Reaction Time Game <span>Python · HTML/CSS</span></p>
+      <ul class="bullets">
+        <li>Developed an interactive Reaction Time Game using <strong>Python</strong> for backend logic and HTML/CSS for the frontend.</li>
+        <li>Implemented <strong>real-time feedback</strong> to enhance user engagement and interactivity.</li>
+        <li>Analyzed user input to ensure over <strong>90% accuracy</strong> in time recording.</li>
+        <li>Visualized game results and feedback for a smooth, enjoyable interactive experience.</li>
+      </ul>
+    </div>
+
+    <div class="project">
+      <p class="project-name">AI Image Detection System <span>Python · Machine Learning</span></p>
+      <ul class="bullets">
+        <li>Developed an AI-powered image detection system using <strong>Python</strong> and machine learning techniques.</li>
+        <li>Implemented image preprocessing and <strong>feature extraction</strong> pipelines for accurate object recognition.</li>
+        <li>Trained and evaluated classification models to achieve high <strong>detection accuracy</strong> across test datasets.</li>
+        <li>Visualized model performance metrics and detection outputs for analysis and improvement.</li>
+      </ul>
+    </div>
+
+    <div class="project">
+      <p class="project-name">Student Record System <span>C++</span></p>
+      <ul class="bullets">
+        <li>Built a system in <strong>C++</strong> to manage student details including roll numbers, names, marks, and grades.</li>
+        <li>Implemented <strong>core operations</strong>: add, view, update, search, and delete records.</li>
+        <li>Used <strong>file handling</strong> for accurate persistent storage and retrieval of student data.</li>
+        <li>Achieved approximately <strong>75% efficiency improvement</strong> over manual management workflows.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- INTERNSHIPS -->
+  <section class="section">
+    <h2 class="section-title">Internship</h2>
+    <div class="intern-card">
+      <div class="intern-badge">
+        <p class="intern-company">Google</p>
+        <p class="intern-type">Virtual</p>
+      </div>
+      <div class="intern-details">
+        <p class="intern-role">Android Developer Intern</p>
+        <p class="intern-meta">Jul 15 – Sep 15, 2025 &nbsp;·&nbsp; Virtual Internship</p>
+      </div>
+    </div>
+
+    <div class="intern-card" style="margin-top:1.4rem;">
+      <div class="intern-badge">
+        <p class="intern-company" style="font-size:0.85rem;">AI–ML</p>
+        <p class="intern-type">Virtual</p>
+      </div>
+      <div class="intern-details">
+        <p class="intern-role">AI-ML Virtual Intern</p>
+        <p class="intern-meta">Virtual Internship &nbsp;·&nbsp; Artificial Intelligence &amp; Machine Learning</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CERTIFICATIONS -->
+  <section class="section">
+    <h2 class="section-title">Certifications</h2>
+    <div class="cert-list">
+      <div class="cert-item">Generative AI <span class="cert-issuer">L&amp;T EduTech</span></div>
+      <div class="cert-item">Soft Skill Development <span class="cert-issuer">NPTEL</span></div>
+      <div class="cert-item">Data Structures &amp; Algorithms <span class="cert-issuer">NPTEL</span></div>
+      <div class="cert-item">Negotiation &amp; Communication <span class="cert-issuer">Coursera</span></div>
+      <div class="cert-item">Time Management Skills <span class="cert-issuer">Infosys Springboard</span></div>
+      <div class="cert-item">Generative AI <span class="cert-issuer">Google</span></div>
+      <div class="cert-item">Data Analysis &amp; Technology <span class="cert-issuer">Deloitte</span></div>
+    </div>
+  </section>
+
+  <!-- ACHIEVEMENTS -->
+  <section class="section">
+    <h2 class="section-title">Achievements &amp; Activities</h2>
+    <div class="achievement-list">
+      <p class="achievement-item">Participated in college-level <strong>RoboWar Event</strong></p>
+      <p class="achievement-item">Attended workshops on <strong>AI and Machine Learning</strong></p>
+    </div>
+  </section>
+
+  <!-- DECLARATION -->
+  <section class="section">
+    <h2 class="section-title">Declaration</h2>
+    <p class="declaration">I hereby declare that the above information is true to the best of my knowledge.</p>
+  </section>
+
+</div>
+
+<footer>Abhinandan Somkuwar · Resume · Built with HTML &amp; CSS</footer>
+</body>
+</html>
